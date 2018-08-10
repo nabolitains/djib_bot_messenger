@@ -21,12 +21,12 @@ app.post('/webhook', (req, res) => {
   let body = req.body;
 console.log(body);
   // Checks this is an event from a page subscription
-  if (body.object === 'champ') {
+  if (body.object === 'page') {
     // Returns a '200 OK' response to all requests
     res.status(200).send('EVENT_RECEIVED');
   } else {
     // Returns a '404 Not Found' if event is not from a page subscription
-    res.Status(404).send('EVENT_INRECEIVED');
+    res.status(404).send('EVENT_INRECEIVED');
   }
 
 });
