@@ -1,0 +1,24 @@
+{
+  "name": "webhook",
+  "version": "0.0.1",
+  "description": "Webhook pour bot messenger",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bot",
+    "messenger",
+    "webhook",
+    "amazone",
+    "ec2"
+  ],
+  "author": "Charko",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
+}
