@@ -4,15 +4,17 @@
 const
   express = require('express'),
   bodyParser = require('body-parser'),
-  hostname = '196.201.200.148',
-  port = 3000,
-  app = express().use(bodyParser.json()); // creates express http server
-console.log(app)
-// Sets server port and logs message on success
-app.listen(port,hostname, () =>
-console.log('webhook est en ecoute...')
-);
+  path = require('path'),
+  app = express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .use(bodyParser.json()); // creates express http server
 
+// Sets server port and logs message on success
+app.listen((process.env.PORT || 5000), () =>
+console.log('webhook est en ecoute...')
+)
 // Creates the endpoint for our webhook
 app.post('/webhook', (req, res) => {
 
@@ -27,7 +29,7 @@ app.post('/webhook', (req, res) => {
       // Gets the message. entry.messaging is an array, but
       // will only ever contain one message, so we get index 0
       let webhook_event = entry.messaging[0];
-      console.log(webhook_event);
+
     });
 
     // Returns a '200 OK' response to all requests
@@ -43,9 +45,7 @@ app.post('/webhook', (req, res) => {
 app.get('/webhook', (req, res) => {
 
   // Your verify token. Should be a random string.
-  let VERIFY_TOKEN = "dfdfrvgrfbvgrtfbrtghtyjnyuk"
-
-  console.log(req.query)
+  let VERIFY_TOKEN = "charmakemoussaabdi"
   // Parse the query params
   let mode = req.query['hub.mode'];
   let token = req.query['hub.verify_token'];
